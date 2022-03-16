@@ -57,22 +57,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="czd-4o-6QW">
-                                <rect key="frame" x="0.0" y="44" width="375" height="276"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="315"/>
                                 <color key="backgroundColor" red="0.96080166101455688" green="0.75670354966581133" blue="0.28952398383032868" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="276" id="6ZE-EX-rv3"/>
+                                    <constraint firstAttribute="height" constant="315" id="6ZE-EX-rv3"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vVM-pI-CHm">
+                                <rect key="frame" x="177.5" y="191.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wtf-Sm-VNO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="czd-4o-6QW" firstAttribute="top" secondItem="Wtf-Sm-VNO" secondAttribute="top" id="0bs-Up-EDY"/>
                             <constraint firstItem="czd-4o-6QW" firstAttribute="width" secondItem="Wtf-Sm-VNO" secondAttribute="width" id="Bp9-Pu-Jek"/>
+                            <constraint firstItem="vVM-pI-CHm" firstAttribute="centerX" secondItem="czd-4o-6QW" secondAttribute="centerX" id="HcR-oj-0nP"/>
+                            <constraint firstItem="vVM-pI-CHm" firstAttribute="centerY" secondItem="czd-4o-6QW" secondAttribute="centerY" id="LMy-wz-nK0"/>
                             <constraint firstItem="czd-4o-6QW" firstAttribute="centerX" secondItem="Wtf-Sm-VNO" secondAttribute="centerX" id="Ysb-b3-nWF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vVS-gH-RsI"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="vVM-pI-CHm" id="IGr-Mm-5TT"/>
+                        <outlet property="imageView" destination="czd-4o-6QW" id="w01-am-Fy7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXV-cN-hGh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
