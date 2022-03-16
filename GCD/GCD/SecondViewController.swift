@@ -32,6 +32,27 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchImage()
+        loginAlert()
+    }
+    
+    fileprivate func loginAlert() {
+        let ac = UIAlertController(title: "Зарегистрированы?", message: "Введите ваш логин и пароль", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .default, handler: nil)
+        
+        ac.addAction(okAction)
+        ac.addAction(cancelAction)
+        
+        ac.addTextField { usernameTF in
+            usernameTF.placeholder = "Введите пароль"
+        }
+        
+        ac.addTextField { userPasswordTF in
+            userPasswordTF.placeholder = "Введите пароль"
+            userPasswordTF.isSecureTextEntry = true
+        }
+        
+        self.present(ac, animated: true, completion: nil)
     }
     
     //установка изображения
@@ -39,20 +60,10 @@ class SecondViewController: UIViewController {
         imageURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        
-        //создаем очередь с третьим приоритетом utility
-        let queue = DispatchQueue.global(qos: .utility)
-        //делаем асинхронно чтобы не ждать пока выполнится загрузка(задачи выполняются одновременно)
-        queue.async {
-            //если у нас существует такой url и если мы можем получить данные из url то
-            guard let url = self.imageURL, let imageData = try? Data(contentsOf: url) else { return }
-            //возвращаемя в главную очередь потому что загрузка интерфейса происходит в главной очереди
-            DispatchQueue.main.async {
-                // то устанавливаем новое значение для нашего изображения
-                self.image = UIImage(data: imageData)
-            }
-        }
-        
+        //если у нас существует такой url и если мы можем получить данные из url то
+        guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
+        // то устанавливаем новое значение для нашего изображения
+        self.image = UIImage(data: imageData)
     }
-    
+
 }
