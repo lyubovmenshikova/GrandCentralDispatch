@@ -32,7 +32,19 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchImage()
-        loginAlert()
+        //вызываем метод где прописываем отсрочку на 3 сек и блок когда который надо отсрочить
+        delay(3) {
+            self.loginAlert()
+        }
+    }
+    
+    //метод по которому мы откладываем исполнение кода
+    fileprivate func delay(_ delay: Int, closure: @escaping () -> ()) {
+        //в главном потоке ставим отсрочку от сейчас асинхронно на delay seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+            //код который будет отодвинут
+            closure()
+        }
     }
     
     fileprivate func loginAlert() {
