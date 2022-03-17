@@ -40,7 +40,7 @@ class SecondViewController: UIViewController {
     
     //метод по которому мы откладываем исполнение кода
     fileprivate func delay(_ delay: Int, closure: @escaping () -> ()) {
-        //в главном потоке ставим отсрочку от сейчас асинхронно на delay seconds
+        //в главном потоке ставим отсрочку от того момента как мы начали асинхронно на delay seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
             //код который будет отодвинут
             closure()
@@ -63,9 +63,10 @@ class SecondViewController: UIViewController {
             userPasswordTF.placeholder = "Введите пароль"
             userPasswordTF.isSecureTextEntry = true
         }
-        
+      
         self.present(ac, animated: true, completion: nil)
     }
+     
     
     //установка изображения
     fileprivate func fetchImage() {
